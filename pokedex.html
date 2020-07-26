@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Ondra's Pokedex</title>
+	</head>
+
+	<body>
+
+		<h1></h1>
+		<!-- Point the image to the image in the folder -->
+		<img src="pokedex.png" alt="Pokedex Picture">
+		<p>
+			<!-- href is the hyperlink, target sets it to a new window/tab -->
+			<a href="https://pokeapi.co/" target="_blank">Visit the API site</a>
+			<br>
+			<label for="pokedex_pick">Choose your Pokemon:</label>
+			<br>
+			<label id="total">Total</label>
+			<br>
+			<!-- select is a dropdown menu -->
+			<select name="pokedex_pick" id="pokedex_pick">
+		</p>
+
+		<script>
+			var requestURL = 'https://pokeapi.co/api/v2/pokemon.json';
+			var request = new XMLHttpRequest();
+			request.open('GET', requestURL);
+			request.responseType = 'json';
+			request.send();
+
+			var pokemon_total = request.response;
+			const jsonResult = JSON.parse(pokemon_total);
+			document.getElementById('total').innerHTML = jsonResult.count;
+
+			// request.onload = function() {
+			// 	var all_pokemon = request.response;
+			// 	populatePokedex(all_pokemon);
+			// }
+
+			// function populatePokedex(jsonObj) {
+			// 	var pokemon = jsonObj['']
+			// }
+		</script>
+
+
+	</body>
+</html>
